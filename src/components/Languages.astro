@@ -1,0 +1,22 @@
+---
+import { languages } from '../content/data/db.ts';
+
+---
+
+<section class="mb-12 p-6 bg-white rounded-2xl border w-full">
+    <h2 class="text-2xl font-bold mb-6">Idiomas</h2>
+
+    <div class="space-y-4">
+        {languages.map((language) => (
+            <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                    <p class="text-lg font-medium">{language.name}</p>
+                    <span class="text-sm text-gray-600">{language.description}</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-black h-2 rounded-full" style={`width: ${language.level}%`}></div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

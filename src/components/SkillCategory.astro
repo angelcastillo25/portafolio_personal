@@ -1,0 +1,60 @@
+---
+import type { Skills } from '../interfaces/Interface';
+import { languages } from '../content/data/db.ts';
+
+interface Props {
+    name: string;
+    skills?: Skills;
+    languages?: Array<{ name: string; level: number; description?: string }>;
+}
+
+const {skills } = Astro.props;
+---
+
+<section id="skills" class="mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Sección de habilidades técnicas -->
+        {skills && Object.entries(skills).map(([category, skillList]) => (
+            <div class="bg-card rounded-[2vw] p-6 border border-[#797979]">
+                <h3 class="text-xl font-semibold mb-4">{category}</h3>
+                <div class="space-y-4">
+                    {skillList
+                        .slice() // Clonamos el array para no mutar el original
+                        .sort((a, b) => b.level - a.level) // Ordenamos de mayor a menor
+                        .map((skill) => (
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-medium">{skill.name}</span>
+                                    <span class="text-sm text-muted-foreground">{skill.level}%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-white border border-black">
+                                    <div class="bg-black h-2.5 rounded-full border border-black" style={`width: ${skill.level}%`}></div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        ))}
+
+        <!-- Sección de idiomas -->
+        {languages && (
+            <div class="bg-card rounded-[2vw] p-6 border border-[#797979]">
+                <h3 class="text-xl font-semibold mb-4">Idiomas</h3>
+                <div class="space-y-4">
+                    {languages.map((language) => (
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <p class="text-lg font-medium">{language.name}</p>
+                                <span class="text-sm text-gray-600">{language.description}</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-black h-2 rounded-full" style={`width: ${language.level}%`}></div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )}
+    </div>
+</section>

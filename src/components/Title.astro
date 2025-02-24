@@ -1,0 +1,8 @@
+---
+// Componente CenteredTitle.astro
+const { title, bold } = Astro.props;
+---
+
+<div class=`flex items-center justify-center mt-[8%] mb-[3%] ${bold && 'font-bold'}`>
+  <p class="text-[22px]">{title}</p>
+</div>

@@ -1,0 +1,48 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+type Project = CollectionEntry<'projects'> & {
+  render: () => Promise<{ Content: any; headings: any[] }>
+} & { slug: string };
+
+export async function getStaticPaths() {
+  const projectEntries: Project[] = await getCollection('projects');
+  return projectEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+interface Props {
+  entry: Project;
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} - Angel Castillo`}>
+  <Navbar></Navbar>
+  <div class="max-w-3xl mx-auto px-6 py-10 text-center mt-10">
+    <h1 class="text-5xl font-bold text-black mb-4">{entry.data.title}</h1>
+    <p class="text-lg text-gray-700 mb-6 italic">{entry.data.description}</p>
+
+    <nav class="mb-10 border-t border-gray-300 pt-6">
+      <h2 class="text-2xl font-semibold mb-3">Índice</h2>
+      <ul class="space-y-2 text-lg">
+        {headings.map((heading: any) => (
+          <li class={`ml-${(heading.depth - 1) * 4}`}>
+            <a href={`#${heading.slug}`} class="text-black hover:underline">
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <article class="text-left leading-relaxed text-gray-800 max-w-2xl mx-auto">
+      <Content />
+    </article>
+  </div>
+</Layout>

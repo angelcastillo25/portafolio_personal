@@ -1,0 +1,13 @@
+---
+import Title from './Title.astro';
+import { aboutMe } from '../content/data/db';
+import Projects from "/public/images/projects.svg";
+---
+
+<Title title="Sobre mí" />
+<div class="flex flex-row justify-between">
+	<p class="flex-1">{aboutMe.aboutMeLarge}</p>
+	<div class="flex flex-1 justify-end">
+		<img src="/public/images/projects.svg" alt="Imagen de proyectos" width="80%" class="max-w-full h-auto object-contain" />
+	</div>
+</div>

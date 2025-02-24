@@ -1,0 +1,31 @@
+---
+import ProjectCard from '../components/ProjectCard.astro';
+import Title from '../components/Title.astro';
+import Layout from '../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Navbar from '../components/Navbar.astro';
+
+type Project = CollectionEntry<'projects'> & { slug: string };
+
+const projects: Project[] = await getCollection('projects') as Project[];
+---
+
+<Layout title="Projects - Angel Castillo">
+    <Navbar></Navbar>
+    <Title title="Mis proyectos" bold="si"></Title>
+    <div class="px-40 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+        {projects.map((project) => (
+            <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            img={project.data.img}
+            href={`/projects/${project.slug}`}
+            lang={project.data.lang}
+            skills={project.data.tecnologies}
+            >
+
+            </ProjectCard>
+        ))}
+    </div>
+
+</Layout>

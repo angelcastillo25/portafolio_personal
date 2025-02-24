@@ -1,0 +1,27 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import SkillCard from '../components/SkillCard.astro';
+
+
+type Project = CollectionEntry<'projects'> & { slug: string };
+
+const projects: Project[] = await getCollection('projects') as Project[];
+
+const { title, description, img, href, lang, skills } = Astro.props;
+---
+
+<a href={href} class="inline-block" data-lang={lang}>
+<div class="w-[270px] min-h-[370px] px-6 bg-white shadow-lg rounded-lg ">
+  <div class="h-[190px] w-full overflow-hidden">
+    <img src={img} alt="Profile Picture" class="w-full h-auto object-cover object-top" />
+  </div>
+  
+  <h2 class="text-[20px] font-bold mt-1">{title}</h2>
+  
+  <div class="flex gap-2 mt-1 overflow-hidden">
+    {skills.map((skill: string) => <SkillCard title={skill} />)}
+  </div>
+  
+  <p class="mt-1 text-gray-700 text-[12px]">{description}</p>
+</div>
+</a>
