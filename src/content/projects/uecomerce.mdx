@@ -1,0 +1,102 @@
+---
+title: "Infraestructura E-commerce"
+description: "Implementación completa de una solución e-commerce escalable, separando componentes clave en múltiples repositorios y utilizando servicios cloud nativos."
+tecnologies:
+  - Azure App Service
+  - Azure Functions
+  - Azure Storage
+  - Terraform
+img: "/images/uecomerce.png"
+repos:
+  - https://github.com/dan8a112/uecomerce_repo_A
+  - https://github.com/angelcastillo25/uecomerce_repo_B
+  - https://github.com/dan8a112/uecomerce_repo_C
+---
+
+# Plataforma E-commerce en Azure - Arquitectura Modular y Despliegue Automatizado
+
+Este proyecto representa el diseño e implementación de una plataforma de comercio electrónico basada completamente en servicios gestionados de **Microsoft Azure**, utilizando **Terraform** como herramienta de infraestructura como código (IaC) y separando la infraestructura en **tres repositorios independientes** para una mejor organización, mantenimiento y escalabilidad.
+
+## Mi rol en el proyecto
+
+Como arquitecto cloud y desarrollador DevOps, me encargué de diseñar, estructurar y desplegar la solución completa, garantizando que cada componente cumpliera con principios de buenas prácticas y rendimiento en la nube.
+
+### 1. Diseño y despliegue modular
+
+Dividí el sistema en tres capas de infraestructura, cada una contenida en su propio repositorio:
+
+#### Repositorio A: Almacenamiento y Mensajería
+
+- **Azure Blob Storage**: Para alojar imágenes de productos de manera segura y eficiente.
+- **Azure Queue Storage**: Para habilitar procesamiento de pedidos en segundo plano, desacoplando el frontend del backend.
+
+#### Repositorio B: Infraestructura Base
+
+- **Azure Static Web Apps**: Sitio público informativo del e-commerce.
+- **Azure App Service (Docker)**: Hospedaje de frontend interactivo (cliente) y backoffice administrativo, usando contenedores con Next.js y Node.js.
+
+#### Repositorio C: Configuración de Aplicaciones y Servicios Críticos
+
+- **Azure Functions**: Procesamiento asíncrono de pedidos.
+- **Azure Cache for Redis**: Caché para acelerar respuestas de catálogo y datos consultados frecuentemente.
+- **Azure Database for MySQL**: Base de datos relacional para almacenar productos, usuarios y órdenes.
+
+### 2. Infraestructura como Código (IaC)
+
+Usé **Terraform** para definir y desplegar todos los recursos. Esto permitió:
+
+- Reproducibilidad del entorno completo.
+- Versionamiento del código de infraestructura.
+- Automatización del despliegue.
+
+Incluye uso de variables, outputs, dependencias y organización por workspaces.
+
+### 3. Arquitectura orientada a eventos y escalabilidad
+
+- Las aplicaciones web están desacopladas del procesamiento de pedidos gracias al uso de colas y Azure Functions.
+- El backend puede escalar vertical u horizontalmente sin afectar al frontend ni al procesamiento interno.
+
+---
+
+## Conclusiones y aprendizajes
+
+### Separación por repositorios
+
+Dividir el proyecto en tres repositorios facilitó el mantenimiento, la comprensión de dependencias y la colaboración. Cada equipo puede trabajar en su parte de forma independiente, y Terraform permite integrarlos en un flujo CI/CD limpio y escalable.
+
+### Valor de las evidencias visuales
+
+Capturas del portal de Azure y salidas de comandos de Terraform fueron clave para documentar el despliegue exitoso, demostrar el cumplimiento de requisitos y facilitar auditorías técnicas.
+
+### Procesamiento asíncrono
+
+Elegí manejar los pedidos de forma asíncrona mediante colas y Azure Functions para:
+
+- Evitar cuellos de botella.
+- Mejorar la experiencia del usuario al no bloquear procesos.
+- Permitir que el sistema escale dinámicamente según la carga.
+
+### Mejora de rendimiento y consistencia
+
+- **Redis** reduce la carga sobre la base de datos y acelera las respuestas, ideal para catálogos que se consultan frecuentemente.
+- **MySQL** asegura integridad de datos y permite transacciones, clave para órdenes y registros sensibles.
+
+---
+
+## Tecnologías Utilizadas
+
+- **Infraestructura**: Azure (App Services, Functions, Static Web Apps, Redis, MySQL, Blob/Queue Storage)
+- **Contenedores**: Docker, Nginx, Node.js, Next.js
+- **DevOps**: Terraform, GitHub Actions
+- **Bases de datos**: Azure MySQL + Redis
+- **CI/CD**: Despliegue automático desde GitHub
+
+## Repositorios del proyecto
+
+- [Almacenamiento y Mensajería](https://github.com/angelcastillo25/ecommerce-almacenamiento-mensajeria)
+- [Infraestructura Base](https://github.com/angelcastillo25/ecommerce-infraestructura-base)
+- [Configuración de Apps y Servicios](https://github.com/angelcastillo25/ecommerce-configuracion-apps)
+
+---
+
+> **Impacto del proyecto**: Esta implementación refuerza mi experiencia en despliegues modernos en la nube, organización de infraestructura en capas y automatización completa con Terraform. Es un ejemplo claro de cómo diseñar y ejecutar soluciones escalables, modulares y eficientes para entornos reales en producción.
