@@ -1,0 +1,69 @@
+---
+title: "Generador de Reportes V2 (PokeAPI Enriquecida)"
+description: "Potencia tu análisis de Pokémon: Desarrollé un generador de reportes avanzado que enriquece datos de la PokeAPI con estadísticas detalladas y muestreo aleatorio."
+tecnologies:
+  - Next.js
+  - FastAPI
+  - Azure Functions
+  - Azure SQL Database
+  - Azure Blob Storage
+  - Terraform
+img: "/images/pokeapi.png"
+---
+
+# Generador de Reportes V2 - Plataforma Avanzada de Análisis de Pokémon
+
+El Generador de Reportes V2 es una evolución significativa de una aplicación web existente, diseñada para crear reportes CSV basados en datos de la PokeAPI. Esta versión ampliada incorpora funcionalidades avanzadas como eliminación completa de reportes, enriquecimiento de datos con estadísticas detalladas de Pokémon y capacidad de muestreo aleatorio. La solución, desplegada en Azure, combina una arquitectura robusta con un flujo de trabajo asíncrono para ofrecer una experiencia de usuario fluida y eficiente.
+
+## Mi rol en el proyecto
+
+Como desarrollador full-stack, lideré la implementación de nuevas funcionalidades y la optimización del sistema existente. Mis responsabilidades abarcaron:
+
+### Implementación de nuevas funcionalidades
+
+- **Eliminación completa de reportes**: Desarrollé un sistema seguro para borrar reportes, incluyendo sus registros en la base de datos y los archivos asociados en Blob Storage.
+- **Enriquecimiento de datos**: Amplié la información de los Pokémon en los reportes, agregando estadísticas base y habilidades mediante llamadas adicionales a la PokeAPI.
+- **Muestreo aleatorio**: Implementé un sistema flexible que permite a los usuarios limitar el número de registros en sus reportes mediante selección aleatoria.
+
+### Optimización de la arquitectura existente
+
+- **Frontend (Next.js)**: Modernicé la interfaz de usuario, añadiendo nuevos componentes como diálogos de confirmación y campos de formulario adicionales.
+- **Backend (FastAPI)**: Extendí la API con nuevos endpoints y lógica de negocio, manteniendo la compatibilidad con el sistema existente.
+- **Procesamiento asíncrono (Azure Functions)**: Mejoré el worker de Python para manejar las nuevas funcionalidades de enriquecimiento de datos y muestreo aleatorio.
+
+## Importancia del proyecto
+
+Este proyecto demuestra la capacidad de evolucionar un sistema existente sin interrumpir su funcionamiento, añadiendo valor a través de:
+
+- **Mayor profundidad analítica**: Los reportes enriquecidos permiten análisis más detallados de las características de los Pokémon.
+- **Flexibilidad**: La opción de muestreo aleatorio facilita el trabajo con grandes conjuntos de datos.
+- **Gestión eficiente**: La capacidad de eliminar reportes completa y seguramente optimiza el uso de recursos de almacenamiento.
+
+## Impacto técnico
+
+Las mejoras implementadas elevan significativamente la capacidad del sistema:
+
+- **Escalabilidad**: La arquitectura basada en servicios Azure asegura un crecimiento sin problemas.
+- **Mantenibilidad**: El código mejorado y documentado facilita futuras extensiones.
+- **Experiencia de usuario**: Las nuevas funcionalidades ofrecen mayor control y valor a los usuarios finales.
+
+## Tecnologías utilizadas
+
+- **Frontend**: Next.js (React)
+- **Backend**: FastAPI (Python)
+- **Procesamiento asíncrono**: Azure Functions (Python)
+- **Almacenamiento**: Azure SQL Database, Azure Blob Storage, Azure Queue Storage
+- **Infraestructura**: Terraform
+- **API Externa**: PokeAPI
+
+## Repositorios
+
+- **Frontend**: [Enlace al repositorio](https://github.com/angelcastillo25/pokequeue.ui)
+- **API**: [Enlace al repositorio](https://github.com/dan8a112/pokequeue.api)
+- **Azure Functions**: [Enlace al repositorio](https://github.com/dan8a112/pokequeue.function)
+- **Base de Datos**: [Enlace al repositorio](https://github.com/tu-usuario/database)
+- **Infraestructura**: [Enlace al repositorio](https://github.com/tu-usuario/iac)
+
+---
+
+> **Impacto del Generador de Reportes V2**: Este proyecto representó un desafío técnico significativo al requerir la integración de múltiples servicios cloud mientras se mantenía la disponibilidad del sistema. La solución no solo amplía las capacidades analíticas para los usuarios interesados en datos de Pokémon, sino que también sirve como ejemplo de cómo evolucionar sistemas existentes de manera segura y eficiente. La arquitectura implementada puede adaptarse fácilmente para trabajar con otras APIs similares, demostrando su versatilidad y potencial para diversos casos de uso.
